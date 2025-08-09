@@ -1,4 +1,5 @@
 require 'faraday'
+require 'faraday/net_http_persistent'
 
 module HTTPClients
   class FaradayNetHttpClient < BaseClient
@@ -22,7 +23,9 @@ module HTTPClients
 
     def persistent_connection
       @persistent_connection = Faraday.new(endpoint, ssl: { verify: false }) do |conn|
-        conn.use Faraday::Adapter::NetHttpPersistent
+        conn.adapter :net_http_persistent, pool_size: 5 do |http|
+          http.idle_timeout = 60
+        end
       end
     end
 
