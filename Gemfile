@@ -9,12 +9,13 @@ gem 'puma'
 gem 'unicorn'
 
 # HTTP clients
-gem 'curb', '0.8.8' # Curb 0.9 versions don't keep a persistent connection somehow.
+gem 'curb'
 gem 'typhoeus'
 gem 'rest-client'
 gem 'http'
 gem 'excon'
 gem 'net-http-persistent'
 gem 'faraday'
+gem 'faraday-net_http_persistent', '~> 2.0'
 gem 'patron'
 gem 'httparty'

@@ -40,7 +40,7 @@ module HTTPClients
 
     def persistent_connection
       @persistent_connection ||= begin
-        http = Net::HTTP::Persistent.new 'http-clients'
+        http = Net::HTTP::Persistent.new name: 'http-clients'
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE if ssl_mode
         http
       end
